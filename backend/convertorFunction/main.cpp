@@ -1,8 +1,10 @@
+#include <pybind11/pybind11.h>
 #include <bits/stdc++.h>
 
+namespace py = pybind11;
 using namespace std;
 
-// A class that will store the index of the line and the 
+// A class that will store the index of the line and the
 // number of pounds symbol "#" at the begining of the line
 class IndexPoundPair
 {
@@ -22,13 +24,13 @@ public:
 class Node
 {
 public:
-    int pounds;           // number of "#" (used to determine the position of this node in hierarchy)
-    bool root;            // if this node is root (has one "#" sign)
-    bool leave;           // if this node has no further children
-    std::string text;     // The content that will be displayed on the node
-    std::string content;  // Content of accordian
-    std::string class_name; // Side of this node with respect to it's siblings (used in styling) 
-    vector<int> children; // Index of childrens of this node
+    int pounds;             // number of "#" (used to determine the position of this node in hierarchy)
+    bool root;              // if this node is root (has one "#" sign)
+    bool leave;             // if this node has no further children
+    std::string text;       // The content that will be displayed on the node
+    std::string content;    // Content of accordian
+    std::string class_name; // Side of this node with respect to it's siblings (used in styling)
+    vector<int> children;   // Index of childrens of this node
     Node(int pounds, string text)
     {
         this->pounds = pounds;
@@ -40,7 +42,7 @@ public:
 };
 
 // Removes spaces from the begining of the sentance
-// argument = "   Hello!  " 
+// argument = "   Hello!  "
 // returns = "Hello!  "
 string
 strip_preceeding_spaces(string line)
@@ -83,7 +85,7 @@ void set_class_name(vector<Node> &node_vec)
 {
     for (int i = 0; i < node_vec.size(); i++)
     {
-        Node node = node_vec[i]; // get the node
+        Node node = node_vec[i];              // get the node
         vector<int> children = node.children; // get it's children
         int children_size = children.size();
         if (children_size == 0)
@@ -165,11 +167,11 @@ string get_JSX_string(vector<Node> &node_vec)
         // pushing the number of pounds of current node in the stack
         pound_stack.push(node.pounds);
     }
-    // Once all the nodes has been dealt with adding closing tag to all the components 
-    // without closing tag 
+    // Once all the nodes has been dealt with adding closing tag to all the components
+    // without closing tag
     while (!pound_stack.empty())
     {
-        jsx += "</SingleComponent>\n";
+        jsx += "</Node>\n";
         pound_stack.pop();
     }
     return jsx;
@@ -189,12 +191,12 @@ string convert_to_JSX_string(string TEXT)
     // getting a single line at a time and putting it in a variable called "line"
     while (getline(ss, line, '\n'))
     {
-        string processed_line = strip_preceeding_spaces(line);// stripped of starting white spaces
+        string processed_line = strip_preceeding_spaces(line); // stripped of starting white spaces
         if (processed_line.size())
         {
             // getting the first word from modified line
             int first_space = processed_line.find(' ');
-            string first_word = processed_line.substr(0, first_space); 
+            string first_word = processed_line.substr(0, first_space);
             // getting number of # from the first word
             int num_of_pounds = get_num_of_pound(first_word);
             // If the line does not have any #. It is content of a node
@@ -254,10 +256,16 @@ string convert_to_JSX_string(string TEXT)
             }
         }
     }
-    
+
     // All the left content will be content of last node
     node_vec[node_vec.size() - 1].content = content;
     set_class_name(node_vec);
     string JSX = get_JSX_string(node_vec);
     return JSX;
+}
+
+PYBIND11_MODULE(string_to_JSX, handle)
+{
+    handle.doc() = "This module is used to convert a normal string to a JSX string suitable for creating flow charts";
+    handle.def("convert_to_JSX_string", &convert_to_JSX_string);
 }
