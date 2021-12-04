@@ -26,7 +26,7 @@ class Notes(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     favourite = models.BooleanField(default=False)
     global_file = models.BooleanField(default=False)
-    content = models.TextField(null=True,blank=True)
+    content = models.TextField(default=" ")
     
     # List of styling property in the form f"style_{componentName}_{JS_style_property_name}"
     style_screen_backgroundColor = models.CharField(max_length=8,default='#ffc7c7')
