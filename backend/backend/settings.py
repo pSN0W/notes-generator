@@ -137,6 +137,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# From where to render images
+MEDIA_URL = '/images/'
+
+# location of our static folder
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
+# Where to upload image
+MEDIA_ROOT = 'static/images'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
