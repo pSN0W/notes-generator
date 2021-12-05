@@ -44,9 +44,16 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 @api_view(['GET'])
 def get_routes(request):
-    routes = [
-        
-    ]
+    """View to display all the endpoints"""
+    routes = {
+        "login" : "To authenticate a user",
+        "notes/" : "All the notes corresponding to user",
+        "notes/create" : "Create new Note",
+        "note/:id": "Specific note from id",
+        "users/" : "All the user in the database",
+        "users/create" : "Create a new user",
+        "users/user":"Specific user"
+    }
     return Response(routes)
 
 
