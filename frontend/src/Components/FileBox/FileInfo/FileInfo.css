@@ -1,0 +1,45 @@
+.fileinfo-structure {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0px 10px;
+	height: 60px;
+}
+
+.fileinfo-structure-hover:hover {
+	background-color: #abebc6;
+	color: black;
+	font-weight: bolder;
+}
+
+.fileinfo-filename {
+	display: flex;
+	width: 50%;
+	gap: 20px;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.fileinfo-fileinfo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	align-content: space-between;
+	gap: 50px;
+}
+
+.fileinfo-empty {
+	width: 30px;
+}
+
+.fileinfo-line {
+	background-color: #ffcce6;
+	height: 1px;
+	width: 100%;
+}
+
+.fileinfo-image {
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+}
