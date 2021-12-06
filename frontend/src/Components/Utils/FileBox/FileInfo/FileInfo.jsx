@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoMdOpen } from 'react-icons/io';
 import './FileInfo.css';
-import LogoGIF from '../../pen-writing.gif';
+import LogoGIF from '../../../../pen-writing.gif';
 
 function FileInfo({
 	value,
@@ -19,18 +19,18 @@ function FileInfo({
 				className={`fileinfo-structure ${
 					!isHeading && 'fileinfo-structure-hover'
 				}`}
-				>
+			>
 				<div className="fileinfo-filename">
 					{/* if it is heading then leave it empty else put the logo image */}
 					{isHeading ? (
 						<div className="fileinfo-empty" />
-						) : (
-							<img
+					) : (
+						<img
 							src={LogoGIF}
 							alt="logoImage"
 							className="fileinfo-image"
-							/>
-							)}
+						/>
+					)}
 					<div>{title}</div>
 				</div>
 				<div className="fileinfo-fileinfo">
