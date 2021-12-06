@@ -1,0 +1,16 @@
+.custominputbox-col-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	margin-right: 20px;
+}
+
+.custominputbox-col-wrap .md-form input[type='text'] {
+	color: white;
+	width: 250px;
+}
+
+.md-form input[type='number'] {
+	color: white;
+}

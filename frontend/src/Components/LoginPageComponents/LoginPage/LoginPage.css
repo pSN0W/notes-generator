@@ -1,0 +1,33 @@
+.login-page-wrapper {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb(41, 33, 33);
+}
+
+.login-page-container {
+	width: 50vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb(41, 33, 33);
+	color: whitesmoke;
+}
+
+.login-page-signup {
+	margin-top: 20px;
+	font-size: 20px;
+}
+
+.login-page-btn {
+	background-color: blueviolet;
+	padding: 10px 40px;
+}
+
+.login-page-btn:hover {
+	background-color: blue;
+	box-shadow: 10px;
+}

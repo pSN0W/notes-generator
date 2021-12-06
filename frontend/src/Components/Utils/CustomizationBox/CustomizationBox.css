@@ -1,0 +1,86 @@
+.customization-box-wrapper {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 3;
+}
+
+.customization-box-container {
+	height: 500px;
+	width: 650px;
+	background-color: #2e363d;
+	font-size: 18px;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 20px;
+	gap: 20px;
+	box-shadow: 10px 10px 10px #201e1e;
+}
+
+.customization-box-header {
+	font-weight: bolder;
+	font-size: 1.2em;
+}
+
+.customization-box-content {
+	display: flex;
+	gap: 50px;
+	height: 350px;
+}
+
+.customization-box-nav-btns {
+	display: flex;
+	flex-direction: column;
+}
+
+.customization-box-option-btn {
+	height: 50px;
+	width: 200px;
+	text-transform: capitalize;
+	text-align: left;
+	padding-left: 20px;
+	color: white;
+	background-color: #2e363d;
+	font-weight: lighter;
+}
+.customization-box-option-btn:focus {
+	outline: none;
+}
+.customization-box-active-option-btn {
+	background-color: #4a4e52;
+	font-weight: bolder;
+	border-left-color: white;
+	border-left-width: 2px;
+	border-left-style: solid;
+}
+
+.customization-box-content-options {
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+}
+
+.customization-box-footer {
+	display: flex;
+	width: 100%;
+	gap: 20px;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.customization-box-footer-btn {
+	padding: 10px;
+}
+
+.customization-box-footer-btn:hover {
+	cursor: pointer;
+	background-color: rgb(92, 89, 89);
+}
