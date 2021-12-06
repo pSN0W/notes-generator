@@ -1,0 +1,18 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.usr-container {
+	display: flex;
+	align-items: baseline;
+	height: 50px;
+	width: fit-content;
+	gap: 10px;
+}
+
+.user-info-image {
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+}

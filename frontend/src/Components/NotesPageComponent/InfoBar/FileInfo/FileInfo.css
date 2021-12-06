@@ -1,0 +1,25 @@
+.container {
+	display: grid;
+	grid-template-columns: 50px 250px;
+	grid-template-rows: 25px 25px;
+	grid-column-gap: 5px;
+	width: fit-content;
+}
+
+.logo {
+	height: 50px;
+	width: 50px;
+	color: tomato;
+	grid-row: 1 / span 2;
+}
+
+.input {
+	margin-left: 10px;
+	font-size: large;
+	background-color: transparent;
+	color: #f78812;
+	border: none;
+}
+.input:focus {
+	border-color: tomato;
+}

@@ -1,0 +1,29 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.user-button {
+	cursor: pointer;
+	background-color: transparent;
+	border: transparent;
+	padding: 2px;
+	color: tomato;
+}
+.user-button:hover {
+	box-shadow: 0 6px 6px rgba(148, 144, 144, 0.6);
+}
+
+.user-text {
+	width: max-content;
+	position: absolute;
+	color: whitesmoke;
+	top: 55px;
+	padding: 4px;
+	background-color: #c7bea2;
+}
+
+.user-container {
+	position: relative;
+	display: inline-block;
+}
