@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginPage from '../Components/LoginPageComponents/LoginPage/LoginPage';
-function LoginPage() {
+function SignInPage() {
 	return (
 		<>
 			<LoginPage />
@@ -8,4 +8,4 @@ function LoginPage() {
 	);
 }
 
-export default LoginPage;
+export default SignInPage;
