@@ -1,28 +1,64 @@
-import React, { useState } from 'react';
-import { fileData } from '../Data/fileData';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
 import CustomInputBox from './CustomInputBox/CustomInputBox';
+
+import { updateNotes } from '../../../Action/notesAction';
 import './CustomizationBox.css';
 
 /*
 	This function displays the customization box displayed when clicked on customize
 */
 function CustomizationBox({ setVisible }) {
-	const settings = fileData.settings;
-	const settingsKeys = Object.keys(settings);
+	const dispatch = useDispatch();
+	const id = useParams().id;
+
+	// getting the notes detail from store
+	const { loading, notesDetail } = useSelector(
+		(state) => state['notesDetail']
+	);
 
 	// The tab which is opened
 	const [value, setValue] = useState(0);
 
 	// Data for different components
-	const [screen, setScreen] = useState(settings.screen);
-	const [box, setBox] = useState(settings.box);
-	const [line, setLine] = useState(settings.line);
-	const [text, setText] = useState(settings.text);
+	const [settings, setSettings] = useState({});
+	const settingsKeys = Object.keys(settings);
+	const [screen, setScreen] = useState({});
+	const [box, setBox] = useState({});
+	const [line, setLine] = useState({});
+	const [text, setText] = useState({});
 
 	// puttings the states and functions in a list so that they
 	// can be referred by their index
 	const stateFunctions = [setScreen, setBox, setLine, setText];
 	const states = [screen, box, line, text];
+
+	// once loaded then update the value of all the components
+	useEffect(() => {
+		setSettings(notesDetail?.settings);
+		setScreen(notesDetail?.settings?.screen);
+		setBox(notesDetail?.settings?.box);
+		setLine(notesDetail?.settings?.line);
+		setText(notesDetail?.settings?.text);
+	}, [loading, notesDetail]);
+
+	// update the new data in backend once the user hit save
+	const handleSave = () => {
+		const data = {
+			settings: {
+				screen: screen,
+				box: box,
+				line: line,
+				text: text
+			}
+		};
+		dispatch(updateNotes(id, data));
+		setVisible(false);
+	};
+
 	return (
 		<div className="customization-box-wrapper">
 			<div className="customization-box-container">
@@ -41,7 +77,7 @@ function CustomizationBox({ setVisible }) {
 								}`}
 							>
 								{option}
-							</button> 
+							</button>
 						))}
 					</div>
 					<div className="customization-box-content-options">
@@ -67,7 +103,12 @@ function CustomizationBox({ setVisible }) {
 					>
 						Cancel
 					</div>
-					<div className="customization-box-footer-btn">Save</div>
+					<div
+						className="customization-box-footer-btn"
+						onClick={handleSave}
+					>
+						Save
+					</div>
 				</div>
 			</div>
 		</div>
