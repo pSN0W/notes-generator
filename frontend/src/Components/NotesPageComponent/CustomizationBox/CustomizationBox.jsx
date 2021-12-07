@@ -19,7 +19,7 @@ function CustomizationBox({ setVisible }) {
 	const { loading, notesDetail } = useSelector(
 		(state) => state['notesDetail']
 	);
-
+ 
 	// The tab which is opened
 	const [value, setValue] = useState(0);
 

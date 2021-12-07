@@ -5,7 +5,10 @@ import {
 	USER_LOGOUT,
 	CREATE_USER_REQUEST,
 	CREATE_USER_SUCCESS,
-	CREATE_USER_FAIL
+	CREATE_USER_FAIL,
+	USER_LIST_REQUEST,
+	USER_LIST_SUCCESS,
+	USER_LIST_FAIL
 } from '../Constants/userConstants';
 import axios from 'axios';
 
@@ -82,7 +85,7 @@ export const createUserAction = (userData) => async (dispatch) => {
 		dispatch({
 			type: CREATE_USER_SUCCESS,
 		}); 
-
+ 
 		// in case of success redirect the user to home page
 		window.location.href = '/';
 
@@ -92,6 +95,45 @@ export const createUserAction = (userData) => async (dispatch) => {
 		// in case of error return the error message
 		dispatch({
 			type: CREATE_USER_FAIL,
+			payload:
+				error.response && error.response.data.detail
+					? error.response.data.detail
+					: error.message
+		});
+	}
+};
+
+// ation to deal with getting user list
+export const listUsers = () => async (dispatch) => {
+	try {
+		dispatch({ type: USER_LIST_REQUEST });
+
+		// get userInfo from local storage
+		const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+		let dataFinal = null;
+
+		// if user info exist then make a get request with auth token
+		if (userInfo) {
+			const config = {
+				headers: {
+					'Content-type': 'application/json',
+					Authorization: `Bearer ${userInfo.token}`
+				}
+			};
+			const { data } = await axios.get(
+				'http://127.0.0.1:8000/api/users/',
+				config
+			);
+			dataFinal = data;
+		} 
+		dispatch({
+			type: USER_LIST_SUCCESS,
+			payload: dataFinal
+		});
+	} catch (error) {
+		dispatch({
+			// in case of error return error message
+			type: USER_LIST_FAIL,
 			payload:
 				error.response && error.response.data.detail
 					? error.response.data.detail

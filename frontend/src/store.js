@@ -7,6 +7,7 @@ import { notesValueUpdateReducer } from './Reducers/notesReducer';
 import { notesUpdateReducer } from './Reducers/notesReducer';
 import { notesCreateReducer } from './Reducers/notesReducer';
 import { userLoginReducer } from './Reducers/userReducer';
+import { userListReducer } from './Reducers/userReducer';
 
 const reducer = combineReducers({
 	notesList: notesListReducer,
@@ -14,7 +15,8 @@ const reducer = combineReducers({
 	notesValue: notesValueUpdateReducer,
 	notesUpdate: notesUpdateReducer,
 	notesCreate: notesCreateReducer,
-	userLogin: userLoginReducer
+	userLogin: userLoginReducer,
+	userList: userListReducer
 });
 
 const initialState = {};
