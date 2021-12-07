@@ -195,7 +195,7 @@ export const createNotes = (userData) => async (dispatch) => {
 				'http://127.0.0.1:8000/api/notes/create',
 				userData,
 				config
-			);
+			); 
 			dataFinal = data;
 		}
 		dispatch({

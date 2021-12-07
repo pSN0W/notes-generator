@@ -41,7 +41,7 @@ function CustomizationBox({ setVisible }) {
 								}`}
 							>
 								{option}
-							</button>
+							</button> 
 						))}
 					</div>
 					<div className="customization-box-content-options">

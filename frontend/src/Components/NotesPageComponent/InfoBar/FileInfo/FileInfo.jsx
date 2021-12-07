@@ -1,10 +1,31 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
 import { MdDriveFileRenameOutline } from 'react-icons/md';
+
 import NavBar from './NavBar/NavBar';
 import './FileInfo.css';
+import { updateFileName } from '../../../../Action/notesAction';
 
 function FileInfo() {
 	const [fileName, setFileName] = useState('Untitled');
+	const dispatch = useDispatch();
+
+	// getting notes detail from the store
+	const { loading, notesDetail, error } = useSelector(
+		(state) => state['notesDetail']
+	);
+
+	// Update the filename when done loading
+	useEffect(() => {
+		setFileName(notesDetail.title);
+	}, [loading, notesDetail]);
+
+	// Update the global data whenever filename changes
+	useEffect(() => {
+		dispatch(updateFileName(fileName));
+	}, [fileName]);
 	return (
 		<section className="container">
 			<MdDriveFileRenameOutline className="logo" />
