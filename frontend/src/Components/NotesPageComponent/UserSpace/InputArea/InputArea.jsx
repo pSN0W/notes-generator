@@ -9,6 +9,7 @@ import './InputArea.css';
 import { updateContent } from '../../../../Action/notesAction';
 
 function InputArea() {
+	const dispatch = useDispatch();
 	const [visible, setVisible] = useState(true);
 	const [inputValue, setInputValue] = useState('');
 

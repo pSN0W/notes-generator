@@ -21,10 +21,10 @@ function Node({ text, children, root, leave, position, content }) {
 
 	// setting the custom styles for components once finished loading
 	useEffect(() => {
-		setBoxStyle(notesDetail.settings?.box);
-		setLineStyle(notesDetail.settings?.line);
-		setLineHzStyle(notesDetail.settings?.['line-hz']);
-		setTextStyle(notesDetail.settings?.text);
+		setBoxStyle(notesDetail.settings.box);
+		setLineStyle(notesDetail.settings.line);
+		setLineHzStyle(notesDetail.settings['line-hz']);
+		setTextStyle(notesDetail.settings.text);
 	}, [loading, notesDetail]);
 	return (
 		<section className="node-container">
@@ -48,13 +48,13 @@ function Node({ text, children, root, leave, position, content }) {
 
 			{/* Display Notes Area */}
 			<div className="node-text" style={boxStyle}>
-				<div
+				<h2
 					className="node-text-content"
 					onClick={() => setShowDetail(!showDetail)}
 					style={textStyle}
 				>
 					{text}
-				</div>
+				</h2>
 
 				{/* Display and hide content when user clicks on text */}
 				{content && showDetail && (

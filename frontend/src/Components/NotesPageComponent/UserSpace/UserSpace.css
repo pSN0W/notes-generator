@@ -1,5 +1,6 @@
 .user-space-container {
 	display: flex;
+	height: 83vh;
 	width: 100vw;
 	overflow: hidden;
 	margin-top: 20px;

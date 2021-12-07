@@ -1,14 +1,8 @@
 .notes-disp-container {
 	padding-top: 20px;
-	height: 80vh;
+	height: 100%;
 	width: 100%;
-	/* background-color: #e6908aea; */
-	/* background-color: #e0c097; */
-	/* background-color: #e26a2c; */
-	/* background-color: #f38181; */
 	background-color: #ffc7c7;
-
-	/* margin-right: 30px; */
 	border-top-left-radius: 40px;
 	border-bottom-left-radius: 40px;
 }

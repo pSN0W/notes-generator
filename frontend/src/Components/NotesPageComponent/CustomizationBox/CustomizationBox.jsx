@@ -25,11 +25,15 @@ function CustomizationBox({ setVisible }) {
 
 	// Data for different components
 	const [settings, setSettings] = useState({});
-	const settingsKeys = Object.keys(settings);
 	const [screen, setScreen] = useState({});
 	const [box, setBox] = useState({});
 	const [line, setLine] = useState({});
 	const [text, setText] = useState({});
+
+	// getting all the key of setting except line-hz
+	const settingsKeys = Object.keys(settings)?.filter(
+		(component) => component !== 'line-hz'
+	);
 
 	// puttings the states and functions in a list so that they
 	// can be referred by their index

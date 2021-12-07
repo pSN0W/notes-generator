@@ -60,16 +60,16 @@ function FileBox({ setVisible, activeIndex }) {
 		// setting newData based on the opened tab
 		switch (value) {
 			case 0:
-				newData = notes.own;
+				newData = notes?.own;
 				break;
 			case 1:
-				newData = notes.own?.filter((file) => file.favourite);
+				newData = notes?.own?.filter((file) => file.favourite);
 				break;
 			case 2:
-				newData = notes.shared;
+				newData = notes?.shared;
 				break;
 			case 3:
-				newData = notes.global;
+				newData = notes?.global;
 				break;
 			default:
 				setData(data);
@@ -116,7 +116,7 @@ function FileBox({ setVisible, activeIndex }) {
 				<FileInfo
 					value={value}
 					title="Title"
-					owner="Owner"
+					owner_name="Owner"
 					last_modified="Last Modified"
 					created_on="Created On"
 					isHeading={true}

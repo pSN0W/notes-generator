@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 import { MDBInput } from 'mdbreact';
+import { useDispatch } from 'react-redux';
+
 import LogoGIF from '../../../pen-writing.gif';
 import './signup.css';
+import { createUserAction } from '../../../Action/userAction';
 
 function SignUp() {
+	const dispatch = useDispatch();
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const handleSubmit = function (e) {
 		e.preventDefault();
-		console.log(userName);
-		console.log(password);
+		const data = {
+			username: userName,
+			password: password,
+			first_name: firstName,
+			last_name: lastName
+		};
+		dispatch(createUserAction(data));
 	};
 	return (
 		<div className="signup-wrapper">

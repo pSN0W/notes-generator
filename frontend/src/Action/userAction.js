@@ -81,7 +81,7 @@ export const createUserAction = (userData) => async (dispatch) => {
 		);
 		dispatch({
 			type: CREATE_USER_SUCCESS,
-		});
+		}); 
 
 		// in case of success redirect the user to home page
 		window.location.href = '/';

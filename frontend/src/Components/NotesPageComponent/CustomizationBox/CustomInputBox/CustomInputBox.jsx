@@ -11,9 +11,10 @@ function CustomInputBox({ attribute, value, state, setState }) {
 	const capitaliseFirstLetter = (word) =>
 		word && word[0].toUpperCase() + word.slice(1);
 
-	// converts camelCase to in space form
-	// borderBottomLeftRadius -> border Bottom Left Radius
-	const getInSpacesForm = (attr_name) => attr_name.replace(/[A-Z]/g, ' $&');
+	// converts camelCase to in space form and then capitalises the first letter
+	// borderBottomLeftRadius -> Border Bottom Left Radius
+	const getInSpacesForm = (attr_name) =>
+		capitaliseFirstLetter(attr_name.replace(/[A-Z]/g, ' $&'));
 
 	// get last word from a sentance
 	// background Color -> Color

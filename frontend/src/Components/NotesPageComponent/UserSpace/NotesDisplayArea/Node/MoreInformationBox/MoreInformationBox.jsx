@@ -6,7 +6,7 @@ import './MoreInformationBox.css';
 function MoreInformationBox({ content }) {
 	const [information, setInformation] = useState([]);
 
-	// pass the content to convertToListOfInfo function and get data desired form 
+	// pass the content to convertToListOfInfo function and get data desired form
 	useEffect(() => {
 		setInformation(convertToListOfInfo(content));
 	}, [content]);

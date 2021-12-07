@@ -34,5 +34,5 @@
 .more-info-box-cell-footer {
 	margin-top: 10px;
 	max-height: 150px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }

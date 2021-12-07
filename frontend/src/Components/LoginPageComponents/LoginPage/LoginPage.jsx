@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { MDBInput } from 'mdbreact';
+
 import LogoGIF from '../../../pen-writing.gif';
 import './LoginPage.css';
+import { loginAction } from '../../../Action/userAction';
 
 function LoginPage() {
+	const dispatch = useDispatch();
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
+
+	// send the user data to backend for authentication
 	const handleSubmit = function (e) {
 		e.preventDefault();
-		console.log(userName);
-		console.log(password);
+		dispatch(loginAction(userName, password));
 	};
 	return (
 		<div className="login-page-wrapper">

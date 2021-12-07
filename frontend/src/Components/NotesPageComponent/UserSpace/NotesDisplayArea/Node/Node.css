@@ -9,7 +9,7 @@
 	position: relative;
 	display: inline-block;
 	border-radius: 20px;
-	border: 3px solid #008066;
+	border-style: solid;
 	background-color: #80ffd4;
 }
 
@@ -48,8 +48,9 @@
 .center {
 	width: 10px;
 }
+
 .node-text h2 {
-	margin: 20px;
+	overflow: hidden;
 }
 
 .node-text h2:hover {
