@@ -198,7 +198,7 @@ export const createNotes = (userData) => async (dispatch) => {
 			); 
 			dataFinal = data;
 		}
-		dispatch({
+		dispatch({  
 			type: NOTES_CREATE_SUCCESS,
 			payload: dataFinal
 		});
