@@ -26,7 +26,7 @@ export const listNotes = () => async (dispatch) => {
 		// get userInfo from local storage
 		const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 		let dataFinal = null;
-
+ 
 		// if user info exist then make a get request with auth token
 		if (userInfo) {
 			const config = {

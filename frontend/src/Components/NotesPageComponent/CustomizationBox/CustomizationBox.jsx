@@ -19,7 +19,13 @@ function CustomizationBox({ setVisible }) {
 	const { loading, notesDetail } = useSelector(
 		(state) => state['notesDetail']
 	);
- 
+
+	// reducer to deal with updating note
+	const {
+		loading: updateLoading,
+		success,
+		error
+	} = useSelector((state) => state['notesUpdate']);
 	// The tab which is opened
 	const [value, setValue] = useState(0);
 
@@ -60,8 +66,14 @@ function CustomizationBox({ setVisible }) {
 			}
 		};
 		dispatch(updateNotes(id, data));
-		setVisible(false);
 	};
+
+	// close the customization box when updated successfully
+	useEffect(() => {
+		if (success) {
+			setVisible(false);
+		}
+	}, [success]);
 
 	return (
 		<div className="customization-box-wrapper">

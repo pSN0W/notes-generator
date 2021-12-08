@@ -1,0 +1,20 @@
+.user-display-wrapper {
+	height: 70px;
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+
+	gap: 50px;
+}
+
+.user-display-wrapper:hover {
+	background-color: rgb(85, 83, 85);
+	cursor: pointer;
+}
+
+.user-display-image {
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+}
