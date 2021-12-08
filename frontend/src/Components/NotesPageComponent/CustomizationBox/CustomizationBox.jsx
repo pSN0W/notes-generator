@@ -68,12 +68,7 @@ function CustomizationBox({ setVisible }) {
 		dispatch(updateNotes(id, data));
 	};
 
-	// close the customization box when updated successfully
-	useEffect(() => {
-		if (success) {
-			setVisible(false);
-		}
-	}, [success]);
+	
 
 	return (
 		<div className="customization-box-wrapper">

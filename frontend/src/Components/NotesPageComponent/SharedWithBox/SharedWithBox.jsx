@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { MDBInput } from 'mdbreact';
 
+import UserDisplay from './UserDisplay/UserDisplay';
+
+import './SharedWithBox.css';
 import { updateNotes } from '../../../Action/notesAction';
 import { listUsers } from '../../../Action/userAction';
 
@@ -60,7 +64,7 @@ function SharedWithBox({ setVisible }) {
 	// filter all user based on the value in input box
 	useEffect(() => {
 		setAllUserList(
-			userList.filter((user) => user.username.includes(inputValue))
+			userList?.filter((user) => user.username.includes(inputValue))
 		);
 	}, [inputValue]);
 
@@ -84,15 +88,9 @@ function SharedWithBox({ setVisible }) {
 		const updateData = global
 			? { global_file: true, shared_with: [] }
 			: { global_file: false, shared_with: sharedWithUserList };
+		console.log(updateData);
 		dispatch(updateNotes(id, updateData));
 	};
-
-	// close the customization box when updated successfully
-	useEffect(() => {
-		if (success) {
-			setVisible(false);
-		}
-	}, [success]);
 
 	return (
 		<div className="shared-box-wrapper">
@@ -108,7 +106,7 @@ function SharedWithBox({ setVisible }) {
 
 					{/* Displaying the list of user in database */}
 					<div className="shared-box-users">
-						{allUserList.map((user) => (
+						{allUserList?.map((user) => (
 							<UserDisplay
 								{...user}
 								key={user.id}
@@ -120,7 +118,7 @@ function SharedWithBox({ setVisible }) {
 				<h5>Shared With</h5>
 				<div className="shared-box-shared-user-box">
 					{/* Displaying the shared_with user with ❌ sign to remove them */}
-					{sharedWithUserList.map((user) => (
+					{sharedWithUserList?.map((user) => (
 						<div className="shared-box-shared-user" key={user}>
 							<div>{user}</div>
 							<div

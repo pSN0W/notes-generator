@@ -291,7 +291,7 @@ class NotesAPIView(APIView):
         # if request has new list for shared_user
         # take this note off the shared_with of old_shared_user
         # add this note to shared_with of new shared user
-        if new_shared_user:
+        if new_shared_user!=None:
             for shared_user in old_shared_user:
                 user = User.objects.get(username=shared_user)
                 user.shared_with.remove(note)
