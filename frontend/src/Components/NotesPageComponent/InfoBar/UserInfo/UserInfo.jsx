@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AiFillSetting } from 'react-icons/ai';
 import { BsFillPersonPlusFill } from 'react-icons/bs';
 
+import SharedWithBox from '../../SharedWithBox/SharedWithBox';
 import CustomizationBox from '../../CustomizationBox/CustomizationBox';
 import UserComponent from './UserComponent/UserComponent';
 import './UserInfo.css';
@@ -11,13 +12,20 @@ import './UserInfo.css';
 function UserInfo() {
 	// whether or not to show the customization box
 	const [visible, setVisible] = useState(false);
+	const [sharedWithBoxVisible, setSharedWithBoxVisible] = useState(false);
 	const isAuthenticated = localStorage.getItem('userInfo');
 	return (
 		<>
+			{sharedWithBoxVisible && (
+				<SharedWithBox setVisible={setSharedWithBoxVisible} />
+			)}
 			{visible && <CustomizationBox setVisible={setVisible} />}
 			<section className="usr-container">
 				<UserComponent text="Share">
-					<BsFillPersonPlusFill size="30px" />
+					<BsFillPersonPlusFill
+						size="30px"
+						onClick={() => setSharedWithBoxVisible(true)}
+					/>
 				</UserComponent>
 				{/* Display customization box when clicked */}
 				<UserComponent text="Customize">
