@@ -19,7 +19,7 @@ function FileInfo() {
 
 	// Update the filename when done loading
 	useEffect(() => {
-		setFileName(notesDetail.title);
+		setFileName(notesDetail?.title);
 	}, [loading, notesDetail]);
 
 	// Update the global data whenever filename changes

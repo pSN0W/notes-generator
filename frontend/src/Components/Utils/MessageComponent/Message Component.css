@@ -1,15 +1,16 @@
 .message-component-wrapper {
 	position: fixed;
 	left: 0px;
-    width: 100%;
+	width: 100%;
 	top: 100px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	z-index: 10000000000;
 }
 
 .message-component-div {
-	min-width: 100px;
+	text-align: center;
 	padding: 10px 20px;
 	border-radius: 10px;
 	color: black;

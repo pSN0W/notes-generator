@@ -5,4 +5,5 @@
 	background-color: #ffc7c7;
 	border-top-left-radius: 40px;
 	border-bottom-left-radius: 40px;
+	overflow: auto;
 }

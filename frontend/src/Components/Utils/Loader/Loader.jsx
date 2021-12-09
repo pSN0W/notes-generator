@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Loader() {
-	return (
+	return ( 
 		<div
 			className="loader"
 			style={{

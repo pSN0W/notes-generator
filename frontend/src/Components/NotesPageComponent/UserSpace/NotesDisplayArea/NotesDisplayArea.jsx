@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import JsxParser from 'react-jsx-parser';
 
 import './NotesDisplayArea.css';
-import Node from './Node/Node'; 
+import Node from './Node/Node';
 
 function NotesDisplayArea() {
 	// graph content that will be passed to the JSX parser
@@ -20,7 +20,7 @@ function NotesDisplayArea() {
 
 	// once loading is done set style and graph content
 	useEffect(() => {
-		setGraphContent(notesDetail['graph_content']);
+		setGraphContent(notesDetail?.graph_content);
 		setStyleScreen(notesDetail.settings?.screen);
 	}, [loading, notesDetail]);
 	return (

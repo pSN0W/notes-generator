@@ -58,7 +58,7 @@ function NavBar() {
 
 	// update the value of favourite when the note has loaded
 	useEffect(() => {
-		setFav(notesDetail.favourite);
+		setFav(notesDetail?.favourite);
 	}, [loading, notesDetail]);
 
 	// update the global favourite everytime favourite is updated

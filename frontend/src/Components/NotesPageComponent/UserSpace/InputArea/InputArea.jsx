@@ -20,7 +20,7 @@ function InputArea() {
 
 	// set content to the content provided from backend
 	useEffect(() => {
-		setInputValue(notesDetail.content);
+		setInputValue(notesDetail?.content);
 	}, [loading, notesDetail]);
 
 	// update the global content value each time the content is updated
