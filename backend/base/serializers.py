@@ -74,7 +74,7 @@ class UserSerializerWithToken(serializers.ModelSerializer):
     full_name = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = User
-        fields = ['id','username','first_name','last_name','token','full_name']
+        fields = ['id','username','first_name','last_name','token','full_name','image']
         extra_kwargs = {
             'password':{
                 'write_only':True,

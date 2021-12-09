@@ -8,6 +8,7 @@ import InfoBar from '../Components/NotesPageComponent/InfoBar/InfoBar';
 import UserSpace from '../Components/NotesPageComponent/UserSpace/UserSpace';
 import MessageComponent from '../Components/Utils/MessageComponent/MessageComponent';
 import Loader from '../Components/Utils/Loader/Loader';
+import PageDNE from '../Components/NotesPageComponent/PageDNE/PageDNE';
 
 import { detailNotes } from '../Action/notesAction';
 
@@ -43,7 +44,7 @@ function NotesPage() {
 	}, []);
 	return (
 		<div>
-			{error && <h1>{error}</h1>}
+			{error && <PageDNE />}
 			{loading && <Loader />}
 			{notesDetail && (
 				<div

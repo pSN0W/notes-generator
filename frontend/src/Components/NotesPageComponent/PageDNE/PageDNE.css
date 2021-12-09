@@ -1,0 +1,47 @@
+.dne-wrapper {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.dne-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 400px;
+	width: 600px;
+	background-color: rgb(70, 64, 64);
+	gap: 20px;
+	box-shadow: 10px 10px 10px #201e1e;
+	color: white;
+    text-align: center;
+}
+
+.dne-user-container {
+	height: 70px;
+    width: 50%;
+    background-color: rgb(144, 139, 130);
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	color: white;
+	text-align: center;
+	gap: 50px;
+}
+
+.dne-heading {
+	color: red;
+}
+
+.dne-user-image {
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+}
