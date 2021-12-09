@@ -33,7 +33,7 @@ class Notes(models.Model):
     style_screen_paddingTop = models.CharField(max_length=8,default='20px')
     
     style_box_backgroundColor = models.CharField(max_length=8,default='#80ffd4')
-    style_box_maxWidth = models.CharField(max_length=8,default='100px')
+    style_box_maxWidth = models.CharField(max_length=8,default='200px')
     style_box_padding = models.CharField(max_length=8,default='10px')
     style_box_borderWidth = models.CharField(max_length=8,default='5px')
     style_box_borderColor = models.CharField(max_length=8,default='#008066')
@@ -46,7 +46,7 @@ class Notes(models.Model):
     style_line_width = models.CharField(max_length=8,default='10px')
 
     style_text_color = models.CharField(max_length=8,default='#121212')
-    style_text_fontSize = models.CharField(max_length=8,default='15px')
+    style_text_fontSize = models.CharField(max_length=8,default='25px')
     style_text_fontWeight = models.CharField(max_length=8,default='2px')
     
     def get_shared_user(self):

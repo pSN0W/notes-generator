@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC -fvisibility=hidden   -flto -fno-fat-lto-objects
 
 CXX_DEFINES = -Dstring_to_JSX_EXPORTS
 
-CXX_INCLUDES = -isystem /home/sn0w/Desktop/notes-generator/backend/convertorFunction/pybind11/include -isystem /usr/include/python3.8 
+CXX_INCLUDES = -isystem /home/sn0w/Desktop/test/notes-generator/backend/convertorFunction/pybind11/include -isystem /usr/include/python3.8 
 

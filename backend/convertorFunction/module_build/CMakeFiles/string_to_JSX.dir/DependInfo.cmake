@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/sn0w/Desktop/notes-generator/backend/convertorFunction/main.cpp" "/home/sn0w/Desktop/notes-generator/backend/convertorFunction/build/CMakeFiles/string_to_JSX.dir/main.cpp.o"
+  "/home/sn0w/Desktop/test/notes-generator/backend/convertorFunction/main.cpp" "/home/sn0w/Desktop/test/notes-generator/backend/convertorFunction/module_build/CMakeFiles/string_to_JSX.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

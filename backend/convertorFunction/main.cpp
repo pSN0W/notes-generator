@@ -257,6 +257,12 @@ string convert_to_JSX_string(string TEXT)
         }
     }
 
+    // if there are nodes just return empty string
+    if (node_vec.size() == 0)
+    {
+        return " ";
+    }
+
     // All the left content will be content of last node
     node_vec[node_vec.size() - 1].content = content;
     set_class_name(node_vec);
