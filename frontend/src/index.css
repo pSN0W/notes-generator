@@ -19,3 +19,7 @@ button {
 button:focus {
 	outline: none;
 }
+
+.md-form input[type='text'] {
+	color: white;
+}

@@ -4,6 +4,10 @@ import { useSelector } from 'react-redux';
 import { MDBInput } from 'mdbreact';
 
 import FileInfo from './FileInfo/FileInfo';
+import NoNotes from './NoNotes';
+import SendToLogin from './SendToLogin';
+import Loader from '../Loader/Loader';
+
 import './FileBox.css';
 import { listNotes, createNotes } from '../../../Action/notesAction';
 
@@ -12,6 +16,7 @@ import { listNotes, createNotes } from '../../../Action/notesAction';
 */
 function FileBox({ setVisible, activeIndex }) {
 	const dispatch = useDispatch();
+	const isAuthenticated = localStorage.getItem('userInfo');
 
 	// states for creating notes
 	const {
@@ -84,10 +89,12 @@ function FileBox({ setVisible, activeIndex }) {
 		// setting data as finData so that the file in that specific tab filtered by
 		// the search box is displayed
 		setData(finData);
-	}, [value, input]);
+	}, [value, input, notes, loading]);
 
 	return (
 		<div className="filebox-wrapper">
+			{loading && <Loader />}
+			{createLoading && <Loader />}
 			<div className="filebox-container">
 				<div className="filebox-button-container">
 					{/* Iterate over the options dict and create a button for each value */}
@@ -112,21 +119,37 @@ function FileBox({ setVisible, activeIndex }) {
 						}}
 					/>
 				</div>
-				{/* The heading for displaying notes */}
-				<FileInfo
-					value={value}
-					title="Title"
-					owner_name="Owner"
-					last_modified="Last Modified"
-					created_on="Created On"
-					isHeading={true}
-				/>
-				{/* Map over the notes in data and create a FileInfo component for each of them */}
-				<div className="filebox-file-info">
-					{data?.map((file) => (
-						<FileInfo value={value} {...file} key={file.id} />
-					))}
-				</div>
+				{	/*If data is not than loop over it and display it 
+					If data is empty and user is authenticated or is on global tab display No Notes else display the user to login
+				*/}
+				{data && data.length ? (
+					<div>
+						{/* The heading for displaying notes */}
+						<FileInfo
+							value={value}
+							title="Title"
+							owner_name="Owner"
+							last_modified="Last Modified"
+							created_on="Created On"
+							isHeading={true}
+						/>
+						{/* Map over the notes in data and create a FileInfo component for each of them */}
+						<div className="filebox-file-info">
+							{data?.map((file) => (
+								<FileInfo
+									value={value}
+									{...file}
+									key={file.id}
+								/>
+							))}
+						</div>
+						{console.log(data)}
+					</div>
+				) : isAuthenticated || value === 3 ? (
+					<NoNotes />
+				) : (
+					<SendToLogin />
+				)}
 				<div className="filebox-footer">
 					<div
 						className="filebox-footer-btn"
