@@ -51,7 +51,7 @@ function NavBar() {
 	const {
 		loading: createLoading,
 		success: createSuccess,
-		createdProduct: createdProduct,
+		createdProduct,
 		error: createError
 	} = useSelector((state) => state['notesCreate']);
 
@@ -70,7 +70,7 @@ function NavBar() {
 	// update the global favourite everytime favourite is updated
 	useEffect(() => {
 		dispatch(updateFavourite(fav));
-	}, [fav]);
+	}, [fav,dispatch]);
 
 	// If a new note has been created successfully redirect there
 	useEffect(() => {

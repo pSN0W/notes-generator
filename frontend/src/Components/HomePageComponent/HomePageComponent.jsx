@@ -67,7 +67,7 @@ function HomePageComponent() {
 							src={`http://127.0.0.1:8000${
 								user ? user.image : '/images/default.jpg'
 							}`}
-							alt="image"
+							alt="user"
 							className="homepage-header-usr-img"
 						/>
 					</Link>
@@ -82,7 +82,7 @@ function HomePageComponent() {
 				</div>
 				<img
 					src={MainPage}
-					alt="main-page-img"
+					alt="main-page"
 					className="homepage-display-img"
 				/>
 			</div>

@@ -27,7 +27,7 @@ function LoginPage() {
 	useEffect(() => {
 		setMessage(error);
 		setClassname('danger');
-		setReRender(!reRender);
+		setReRender((prev) => !prev);
 	}, [error]);
 
 	// send the user data to backend for authentication

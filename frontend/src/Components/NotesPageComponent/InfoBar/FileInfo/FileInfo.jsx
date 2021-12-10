@@ -13,7 +13,7 @@ function FileInfo() {
 	const dispatch = useDispatch();
 
 	// getting notes detail from the store
-	const { loading, notesDetail, error } = useSelector(
+	const { loading, notesDetail } = useSelector(
 		(state) => state['notesDetail']
 	);
 
@@ -25,7 +25,7 @@ function FileInfo() {
 	// Update the global data whenever filename changes
 	useEffect(() => {
 		dispatch(updateFileName(fileName));
-	}, [fileName]);
+	}, [fileName, dispatch]);
 	return (
 		<section className="container">
 			<MdDriveFileRenameOutline className="logo" />
