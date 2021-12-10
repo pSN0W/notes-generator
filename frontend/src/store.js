@@ -8,15 +8,19 @@ import { notesUpdateReducer } from './Reducers/notesReducer';
 import { notesCreateReducer } from './Reducers/notesReducer';
 import { userLoginReducer } from './Reducers/userReducer';
 import { userListReducer } from './Reducers/userReducer';
+import { createUserReducer } from './Reducers/userReducer';
+import { updateUserReducer } from './Reducers/userReducer';
 
 const reducer = combineReducers({
 	notesList: notesListReducer,
 	notesDetail: notesDetailReducer,
 	notesValue: notesValueUpdateReducer,
 	notesUpdate: notesUpdateReducer,
-	notesCreate: notesCreateReducer, 
+	notesCreate: notesCreateReducer,
 	userLogin: userLoginReducer,
-	userList: userListReducer
+	userList: userListReducer,
+	userCreate: createUserReducer,
+	userUpdate: updateUserReducer
 });
 
 const initialState = {};

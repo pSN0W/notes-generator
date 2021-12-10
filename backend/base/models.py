@@ -7,7 +7,7 @@ class User(AbstractUser):
     """
     Custom user model 
     """
-    image = models.ImageField(blank=True,null=True) # Image of the user
+    image = models.ImageField(blank=True,null=True,default='default.jpg') # Image of the user
     shared_with = models.ManyToManyField('Notes',blank=True) # Connection with the table notes
     
     def get_own_notes(self):

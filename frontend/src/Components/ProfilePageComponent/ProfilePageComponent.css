@@ -7,11 +7,18 @@
 	background-color: rgb(41, 33, 33);
 }
 
-.profile-page-img{
-    margin-left: 50px;
-    height: 500px;
-    width: 500px;
-    border-radius: 300px;
+.profile-page-img-container {
+	padding-left: 100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 50px;
+}
+
+.profile-page-img {
+	height: 500px;
+	width: 500px;
+	border-radius: 300px;
 }
 
 .profile-page-container {
@@ -25,10 +32,10 @@
 	color: whitesmoke;
 }
 
-.profile-page-button-container{
-    margin-top: 50px;
-    display: flex;
-    gap: 50px;
+.profile-page-button-container {
+	margin-top: 50px;
+	display: flex;
+	gap: 50px;
 }
 
 .profile-page-btn {

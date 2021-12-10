@@ -5,10 +5,6 @@ import ProfilePageComponent from '../Components/ProfilePageComponent/ProfilePage
 import { logoutAction } from '../Action/userAction';
 
 function ProfilePage() {
-	const dispatch = useDispatch();
-	const handleLogOut = () => {
-		dispatch(logoutAction());
-	};
 	return (
 		<div>
 			<ProfilePageComponent />

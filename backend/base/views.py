@@ -146,6 +146,22 @@ class UserAPIView(APIView):
         user.delete()
         return Response({"Message":"Deleted Successfully"},status=status.HTTP_200_OK)
     
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def upload_image(request):
+    """View to deal with updating user image"""
+    
+    # get the user with the same id
+    user = User.objects.get(id=request.user.id)
+        
+    # update the image of the user
+    user.image = request.FILES.get('image')
+    user.save()
+    
+    # return the new serialized data with token
+    serializer = UserSerializerWithToken(user)
+    return Response(serializer.data)
+    
 @api_view(['GET'])
 def get_notes(request):
     """APIView to get all the notes related to a user"""

@@ -6,6 +6,9 @@ import {
 	CREATE_USER_REQUEST,
 	CREATE_USER_SUCCESS,
 	CREATE_USER_FAIL,
+	UPDATE_USER_REQUEST,
+	UPDATE_USER_SUCCESS,
+	UPDATE_USER_FAIL,
 	USER_LIST_REQUEST,
 	USER_LIST_SUCCESS,
 	USER_LIST_FAIL
@@ -103,7 +106,7 @@ export const createUserAction = (userData) => async (dispatch) => {
 	}
 };
 
-// ation to deal with getting user list
+// action to deal with getting user list
 export const listUsers = () => async (dispatch) => {
 	try {
 		dispatch({ type: USER_LIST_REQUEST });
@@ -134,6 +137,90 @@ export const listUsers = () => async (dispatch) => {
 		dispatch({
 			// in case of error return error message
 			type: USER_LIST_FAIL,
+			payload:
+				error.response && error.response.data.detail
+					? error.response.data.detail
+					: error.message
+		});
+	}
+};
+
+// action to deal with updating user
+export const updateUser = (formData) => async (dispatch) => {
+	try {
+		dispatch({ type: UPDATE_USER_REQUEST });
+
+		// get userInfo from local storage
+		const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+		let dataFinal = null;
+
+		// if user info exist then make a put request with auth token
+		if (userInfo) {
+			const config = {
+				headers: {
+					'Content-type': 'application/json',
+					Authorization: `Bearer ${userInfo.token}`
+				}
+			};
+			const { data } = await axios.put(
+				'http://127.0.0.1:8000/api/users/user',
+				formData,
+				config
+			);
+			dataFinal = data;
+		}
+		dispatch({
+			type: UPDATE_USER_SUCCESS
+		});
+
+		// set the user data in local storage
+		localStorage.setItem('userInfo', JSON.stringify(dataFinal));
+	} catch (error) {
+		dispatch({
+			// in case of error return error message
+			type: UPDATE_USER_FAIL,
+			payload:
+				error.response && error.response.data.detail
+					? error.response.data.detail
+					: error.message
+		});
+	}
+};
+
+// action to deal with updating image of the user
+export const updateImage = (formData) => async (dispatch) => {
+	try {
+		dispatch({ type: UPDATE_USER_REQUEST });
+
+		// get userInfo from local storage
+		const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+		let dataFinal = null;
+
+		// if user info exist then make a post request with auth token
+		if (userInfo) {
+			const config = {
+				headers: {
+					'Content-type': 'multipart/form-data',
+					Authorization: `Bearer ${userInfo.token}`
+				}
+			};
+			const { data } = await axios.post(
+				'http://127.0.0.1:8000/api/users/user/upload-image',
+				formData,
+				config
+			);
+			dataFinal = data;
+		}
+		dispatch({
+			type: UPDATE_USER_SUCCESS
+		});
+
+		// set the user data in local storage
+		localStorage.setItem('userInfo', JSON.stringify(dataFinal));
+	} catch (error) {
+		dispatch({
+			// in case of error return error message
+			type: UPDATE_USER_FAIL,
 			payload:
 				error.response && error.response.data.detail
 					? error.response.data.detail

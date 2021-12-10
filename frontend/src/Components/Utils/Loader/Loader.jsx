@@ -1,10 +1,13 @@
 import React from 'react';
 
 function Loader() {
-	return (  
+	return (
 		<div
 			className="loader"
 			style={{
+				position: 'fixed',
+				left: '0px',
+				top: '0px',
 				width: '100vw',
 				height: '100vh',
 				backgroundColor: 'rgba(0, 0, 0, 0.6)',

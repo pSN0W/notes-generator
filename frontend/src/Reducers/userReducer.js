@@ -6,6 +6,9 @@ import {
 	CREATE_USER_REQUEST,
 	CREATE_USER_SUCCESS,
 	CREATE_USER_FAIL,
+	UPDATE_USER_REQUEST,
+	UPDATE_USER_SUCCESS,
+	UPDATE_USER_FAIL,
 	USER_LIST_REQUEST,
 	USER_LIST_SUCCESS,
 	USER_LIST_FAIL
@@ -35,6 +38,20 @@ export const createUserReducer = (state = {}, action) => {
 		case CREATE_USER_SUCCESS:
 			return { loading: false, success: true };
 		case CREATE_USER_FAIL:
+			return { loading: false, error: action.payload };
+		default:
+			return state;
+	}
+};
+
+// reducer to update a new user
+export const updateUserReducer = (state = {}, action) => {
+	switch (action.type) {
+		case UPDATE_USER_REQUEST:
+			return { loading: true };
+		case UPDATE_USER_SUCCESS:
+			return { loading: false, success: true };
+		case UPDATE_USER_FAIL:
 			return { loading: false, error: action.payload };
 		default:
 			return state;
