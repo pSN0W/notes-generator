@@ -62,8 +62,8 @@ export const notesValueUpdateReducer = (state = {}, action) => {
 };
 
 // reducer to update the note in the database
-export const notesUpdateReducer = (
-	state = { notesDetail: { settings: {} } },
+export const notesUpdateReducer = ( 
+	state = {},
 	action
 ) => {
 	switch (action.type) {

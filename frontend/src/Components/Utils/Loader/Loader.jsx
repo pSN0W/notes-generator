@@ -3,7 +3,7 @@ import React from 'react';
 function Loader() {
 	return (
 		<div
-			className="loader"
+			className="loader" 
 			style={{
 				position: 'fixed',
 				left: '0px',

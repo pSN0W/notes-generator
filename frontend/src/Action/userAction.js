@@ -33,10 +33,10 @@ export const loginAction = (username, password) => async (dispatch) => {
 			{ username: username, password: password },
 			config
 		);
-		
+
 		// if success then dispatch login successe
 		dispatch({
-			type: USER_LOGIN_SUCCESS,
+			type: USER_LOGIN_SUCCESS
 		});
 
 		// redirect to the home page
@@ -86,9 +86,9 @@ export const createUserAction = (userData) => async (dispatch) => {
 			config
 		);
 		dispatch({
-			type: CREATE_USER_SUCCESS,
-		}); 
- 
+			type: CREATE_USER_SUCCESS
+		});
+
 		// in case of success redirect the user to home page
 		window.location.href = '/';
 
@@ -113,25 +113,21 @@ export const listUsers = () => async (dispatch) => {
 
 		// get userInfo from local storage
 		const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-		let dataFinal = null;
 
-		// if user info exist then make a get request with auth token
-		if (userInfo) {
-			const config = {
-				headers: {
-					'Content-type': 'application/json',
-					Authorization: `Bearer ${userInfo.token}`
-				}
-			};
-			const { data } = await axios.get(
-				'http://127.0.0.1:8000/api/users/',
-				config
-			);
-			dataFinal = data;
-		} 
+		// make a get request with auth token
+		const config = {
+			headers: {
+				'Content-type': 'application/json',
+				Authorization: `Bearer ${userInfo.token}`
+			}
+		};
+		const { data } = await axios.get(
+			'http://127.0.0.1:8000/api/users/',
+			config
+		);
 		dispatch({
 			type: USER_LIST_SUCCESS,
-			payload: dataFinal
+			payload: data
 		});
 	} catch (error) {
 		dispatch({
@@ -152,29 +148,25 @@ export const updateUser = (formData) => async (dispatch) => {
 
 		// get userInfo from local storage
 		const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-		let dataFinal = null;
 
-		// if user info exist then make a put request with auth token
-		if (userInfo) {
-			const config = {
-				headers: {
-					'Content-type': 'application/json',
-					Authorization: `Bearer ${userInfo.token}`
-				}
-			};
-			const { data } = await axios.put(
-				'http://127.0.0.1:8000/api/users/user',
-				formData,
-				config
-			);
-			dataFinal = data;
-		}
+		// then make a put request with auth token
+		const config = {
+			headers: {
+				'Content-type': 'application/json',
+				Authorization: `Bearer ${userInfo.token}`
+			}
+		};
+		const { data } = await axios.put(
+			'http://127.0.0.1:8000/api/users/user',
+			formData,
+			config
+		);
 		dispatch({
 			type: UPDATE_USER_SUCCESS
 		});
 
 		// set the user data in local storage
-		localStorage.setItem('userInfo', JSON.stringify(dataFinal));
+		localStorage.setItem('userInfo', JSON.stringify(data));
 	} catch (error) {
 		dispatch({
 			// in case of error return error message
@@ -194,29 +186,25 @@ export const updateImage = (formData) => async (dispatch) => {
 
 		// get userInfo from local storage
 		const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-		let dataFinal = null;
 
-		// if user info exist then make a post request with auth token
-		if (userInfo) {
-			const config = {
-				headers: {
-					'Content-type': 'multipart/form-data',
-					Authorization: `Bearer ${userInfo.token}`
-				}
-			};
-			const { data } = await axios.post(
-				'http://127.0.0.1:8000/api/users/user/upload-image',
-				formData,
-				config
-			);
-			dataFinal = data;
-		}
+		// make a post request with auth token
+		const config = {
+			headers: {
+				'Content-type': 'multipart/form-data',
+				Authorization: `Bearer ${userInfo.token}`
+			}
+		};
+		const { data } = await axios.post(
+			'http://127.0.0.1:8000/api/users/user/upload-image',
+			formData,
+			config
+		);
 		dispatch({
 			type: UPDATE_USER_SUCCESS
 		});
 
 		// set the user data in local storage
-		localStorage.setItem('userInfo', JSON.stringify(dataFinal));
+		localStorage.setItem('userInfo', JSON.stringify(data));
 	} catch (error) {
 		dispatch({
 			// in case of error return error message

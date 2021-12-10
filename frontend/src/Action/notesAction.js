@@ -26,7 +26,7 @@ export const listNotes = () => async (dispatch) => {
 		// get userInfo from local storage
 		const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 		let dataFinal = null;
- 
+
 		// if user info exist then make a get request with auth token
 		if (userInfo) {
 			const config = {
@@ -99,8 +99,8 @@ export const detailNotes = (id) => async (dispatch) => {
 			// in case of error return error message
 			type: NOTES_DETAIL_FAIL,
 			payload:
-				error.response && error.response.data.message
-					? error.response.data.message
+				error.response && error.response.data.detail
+					? error.response.data.detail
 					: error.message
 		});
 	}
@@ -137,23 +137,18 @@ export const updateNotes = (id, userData) => async (dispatch) => {
 		dispatch({ type: NOTES_UPDATE_REQUEST });
 
 		// get the user info from local storage and then make a patch request for data
-		// no need to deal with non authenticated user
 		const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-		let dataFinal = null;
-		if (userInfo) {
-			const config = {
-				headers: {
-					'Content-type': 'application/json',
-					Authorization: `Bearer ${userInfo.token}`
-				}
-			};
-			const { data } = await axios.patch(
-				`http://127.0.0.1:8000/api/notes/${id}`,
-				userData,
-				config
-			);
-			dataFinal = data;
-		}
+		const config = {
+			headers: {
+				'Content-type': 'application/json',
+				Authorization: `Bearer ${userInfo?.token}`
+			}
+		};
+		const { data } = await axios.patch(
+			`http://127.0.0.1:8000/api/notes/${id}`,
+			userData,
+			config
+		);
 		dispatch({
 			type: NOTES_UPDATE_SUCCESS
 		});
@@ -161,15 +156,15 @@ export const updateNotes = (id, userData) => async (dispatch) => {
 		// update the content of the notes with the new content
 		dispatch({
 			type: NOTES_DETAIL_SUCCESS,
-			payload: dataFinal
+			payload: data
 		});
 	} catch (error) {
 		// in case of error display error message
 		dispatch({
 			type: NOTES_UPDATE_FAIL,
 			payload:
-				error.response && error.response.data.message
-					? error.response.data.message
+				error.response && error.response.data.detail
+					? error.response.data.detail
 					: error.message
 		});
 	}
@@ -180,35 +175,31 @@ export const updateNotes = (id, userData) => async (dispatch) => {
 export const createNotes = (userData) => async (dispatch) => {
 	try {
 		dispatch({ type: NOTES_CREATE_REQUEST });
-		let dataFinal = null;
 
 		// get user info and make a post request with the data
 		const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-		if (userInfo) {
-			const config = {
-				headers: {
-					'Content-type': 'application/json',
-					Authorization: `Bearer ${userInfo.token}`
-				}
-			};
-			const { data } = await axios.post(
-				'http://127.0.0.1:8000/api/notes/create',
-				userData,
-				config
-			); 
-			dataFinal = data;
-		}
-		dispatch({  
+		const config = {
+			headers: {
+				'Content-type': 'application/json',
+				Authorization: `Bearer ${userInfo?.token}`
+			}
+		};
+		const { data } = await axios.post(
+			'http://127.0.0.1:8000/api/notes/create',
+			userData,
+			config
+		);
+		dispatch({
 			type: NOTES_CREATE_SUCCESS,
-			payload: dataFinal
+			payload: data
 		});
 	} catch (error) {
 		// in case of error display the error message
 		dispatch({
 			type: NOTES_CREATE_FAIL,
 			payload:
-				error.response && error.response.data.message
-					? error.response.data.message
+				error.response && error.response.data.detail
+					? error.response.data.detail
 					: error.message
 		});
 	}

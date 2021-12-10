@@ -13,7 +13,7 @@ import PageDNE from '../Components/NotesPageComponent/PageDNE/PageDNE';
 import { detailNotes } from '../Action/notesAction';
 
 // new context to update message box
-const MessageContext = React.createContext();
+export const MessageContext = React.createContext();
 
 function NotesPage() {
 	const dispatch = useDispatch();
@@ -43,27 +43,29 @@ function NotesPage() {
 		dispatch(detailNotes(id));
 	}, []);
 	return (
-		<div>
-			{error && <PageDNE />}
-			{loading && <Loader />}
-			{notesDetail && (
-				<div
-					style={{
-						backgroundColor: '#121212',
-						height: '100vh',
-						overflow: 'hidden'
-					}}
-				>
-					<MessageComponent
-						message={message}
-						classname={classname}
-						reRender={reRender}
-					/>
-					<InfoBar />
-					<UserSpace />
-				</div>
-			)}
-		</div>
+		<MessageContext.Provider value={updateMessageBox}>
+			<div>
+				{error && <PageDNE />}
+				{loading && <Loader />}
+				{notesDetail && (
+					<div
+						style={{
+							backgroundColor: '#121212',
+							height: '100vh',
+							overflow: 'hidden'
+						}}
+					>
+						<MessageComponent
+							message={message}
+							classname={classname}
+							reRender={reRender}
+						/>
+						<InfoBar />
+						<UserSpace />
+					</div>
+				)}
+			</div>
+		</MessageContext.Provider>
 	);
 }
 

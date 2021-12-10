@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -15,6 +15,8 @@ import { RiMailStarFill } from 'react-icons/ri';
 import './NavBar.css';
 import NavButton from './NavButton/NavButton';
 import FileBox from '../../../../Utils/FileBox/FileBox';
+import Loader from '../../../../Utils/Loader/Loader';
+import { MessageContext } from '../../../../../Pages/NotesPage';
 
 import {
 	updateFavourite,
@@ -34,6 +36,9 @@ function NavBar() {
 	const dispatch = useDispatch();
 	const id = useParams().id;
 
+	// function to update the message box
+	const updateMessageBox = useContext(MessageContext);
+
 	// the global data of this note
 	const data = useSelector((state) => state['notesValue']);
 
@@ -42,7 +47,7 @@ function NavBar() {
 		(state) => state['notesDetail']
 	);
 
-	// getting loading detail from reducer
+	// getting create detail from reducer
 	const {
 		loading: createLoading,
 		success: createSuccess,
@@ -50,11 +55,12 @@ function NavBar() {
 		error: createError
 	} = useSelector((state) => state['notesCreate']);
 
-	// openFileBox displays the FileBox with particular tab
-	const openFileBox = (ind) => {
-		setIndex(ind);
-		setVisible(true);
-	};
+	// getting update detail from reducer
+	const {
+		loading: updateLoading,
+		success: updateSuccess,
+		error: updateError
+	} = useSelector((state) => state['notesUpdate']);
 
 	// update the value of favourite when the note has loaded
 	useEffect(() => {
@@ -72,6 +78,27 @@ function NavBar() {
 			window.location.href = `/notes/${createdProduct.id}`;
 		}
 	}, [createSuccess]);
+
+	// If error occurs in creating note display it
+	useEffect(() => {
+		updateMessageBox(createError, 'danger');
+	}, [createError]);
+
+	// Display update success message when notes is updated successfully
+	useEffect(() => {
+		updateMessageBox('Note updated successfully', 'success');
+	}, [updateSuccess]);
+
+	// Display error message if error occured while updating Note
+	useEffect(() => {
+		updateMessageBox(updateError, 'danger');
+	}, [updateError]);
+
+	// openFileBox displays the FileBox with particular tab
+	const openFileBox = (ind) => {
+		setIndex(ind);
+		setVisible(true);
+	};
 
 	// Handle updating the note by sending the global data of note to database
 	// this global data gets updated everytime any item changes
@@ -91,6 +118,9 @@ function NavBar() {
 	return (
 		<>
 			{visible && <FileBox activeIndex={index} setVisible={setVisible} />}
+			{loading && <Loader />}
+			{createLoading && <Loader />}
+			{updateLoading && <Loader />}
 			<nav>
 				<ul>
 					<li>

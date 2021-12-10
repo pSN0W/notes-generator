@@ -1,5 +1,7 @@
 .notes-disp-container {
-	padding-top: 20px;
+	display: flex;
+	justify-content: start;
+	align-items: start;
 	height: 100%;
 	width: 100%;
 	background-color: #ffc7c7;
