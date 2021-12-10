@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { AiFillSetting } from 'react-icons/ai';
 import { BsFillPersonPlusFill } from 'react-icons/bs';
@@ -12,6 +13,8 @@ import { featureData } from './Data/featureData';
 import LogoGIF from '../../pen-writing.gif';
 import MainPage from './Images/main_page.png';
 function HomePageComponent() {
+	const user = JSON.parse(localStorage.getItem('userInfo'));
+
 	// to display the filebox
 	const [show, setShow] = useState(false);
 
@@ -41,7 +44,7 @@ function HomePageComponent() {
 	}, []);
 	return (
 		<div className="homepage-wrapper">
-			{show && <FileBox activeIndex={activeIndex} setVisible={setShow}/>}
+			{show && <FileBox activeIndex={activeIndex} setVisible={setShow} />}
 			<div className="homepage-header">
 				<div className="homepage-header-wrapper">
 					<img
@@ -52,8 +55,22 @@ function HomePageComponent() {
 					<div className="homepage-header-title">Notesy</div>
 				</div>
 				<div className="homepage-header-wrapper">
-					<button onClick={()=>setShow(true)}>Notes</button>
-					<div>Login</div>
+					<div
+						className="homepage-header-note"
+						onClick={() => setShow(true)}
+					>
+						Notes
+					</div>
+					<Link to={user ? '/profile' : '/login'}>
+						{/* If user is authenticated show it's image else show default image */}
+						<img
+							src={`http://127.0.0.1:8000${
+								user ? user.image : '/images/default.jpg'
+							}`}
+							alt="image"
+							className="homepage-header-usr-img"
+						/>
+					</Link>
 				</div>
 			</div>
 			<div className="homepage-display">

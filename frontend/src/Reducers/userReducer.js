@@ -47,7 +47,7 @@ export const createUserReducer = (state = {}, action) => {
 // reducer to update a new user
 export const updateUserReducer = (state = {}, action) => {
 	switch (action.type) {
-		case UPDATE_USER_REQUEST:
+		case UPDATE_USER_REQUEST: 
 			return { loading: true };
 		case UPDATE_USER_SUCCESS:
 			return { loading: false, success: true };

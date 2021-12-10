@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { MDBInput } from 'mdbreact';
+
+import Loader from '../../Utils/Loader/Loader';
+import MessageComponent from '../../Utils/MessageComponent/MessageComponent';
 
 import LogoGIF from '../../../pen-writing.gif';
 import './LoginPage.css';
@@ -11,6 +15,21 @@ function LoginPage() {
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
 
+	// state of message box component
+	const [message, setMessage] = useState('');
+	const [classname, setClassname] = useState('danger');
+	const [reRender, setReRender] = useState(true);
+
+	// state related to login of user
+	const { loading, error } = useSelector((state) => state['userLogin']);
+
+	// display error message in casse of error
+	useEffect(() => {
+		setMessage(error);
+		setClassname('danger');
+		setReRender(!reRender);
+	}, [error]);
+
 	// send the user data to backend for authentication
 	const handleSubmit = function (e) {
 		e.preventDefault();
@@ -18,6 +37,12 @@ function LoginPage() {
 	};
 	return (
 		<div className="login-page-wrapper">
+			{loading && <Loader />}
+			<MessageComponent
+				message={message}
+				classname={classname}
+				reRender={reRender}
+			/>
 			<img src={LogoGIF} alt="logo" className="login-page-img" />
 			<div className="login-page-container text-left">
 				{/* Input box for username and password 
@@ -47,7 +72,9 @@ function LoginPage() {
 					Login
 				</button>
 				{/* Take unregistered user to sign up page */}
-				<p className="login-page-signup">New User? Sign Up</p>
+				<p className="login-page-signup">
+					New User? <Link to="/register"> Sign Up </Link>{' '}
+				</p>
 			</div>
 		</div>
 	);

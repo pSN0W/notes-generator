@@ -13,10 +13,11 @@ function UserInfo() {
 	// whether or not to show the customization box
 	const [visible, setVisible] = useState(false);
 	const [sharedWithBoxVisible, setSharedWithBoxVisible] = useState(false);
-	const isAuthenticated = localStorage.getItem('userInfo');
+	const user = JSON.parse(localStorage.getItem('userInfo'));
 	return (
 		<>
-			{sharedWithBoxVisible && (
+			{/* Show shared with box when user is authenticated and sharedWithBoxVisible is set to true */}
+			{user && sharedWithBoxVisible && (
 				<SharedWithBox setVisible={setSharedWithBoxVisible} />
 			)}
 			{visible && <CustomizationBox setVisible={setVisible} />}
@@ -36,10 +37,13 @@ function UserInfo() {
 				</UserComponent>
 				{/* If user is authenticated then take them to profile page. 
 					Else take them to login page */}
-				<Link to={isAuthenticated ? '/profile' : '/login'}>
-					<UserComponent text={isAuthenticated ? 'Profile' : 'Login'}>
+				<Link to={user ? '/profile' : '/login'}>
+					<UserComponent text={user ? 'Profile' : 'Login'}>
+						{/* If user is authenticated show it's image else show default image */}
 						<img
-							src="https://previews.123rf.com/images/yacobchuk/yacobchuk2004/yacobchuk200400387/143834115-pleasant-emotions-charming-blonde-female-person-keeping-smile-on-her-face-while-doing-beauty-procedu.jpg"
+							src={`http://127.0.0.1:8000${
+								user ? user.image : '/images/default.jpg'
+							}`}
 							alt="image"
 							className="user-info-image"
 						/>

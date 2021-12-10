@@ -9,7 +9,7 @@ import './FileInfo.css';
 import { updateFileName } from '../../../../Action/notesAction';
 
 function FileInfo() {
-	const [fileName, setFileName] = useState('Untitled');
+	const [fileName, setFileName] = useState('');
 	const dispatch = useDispatch();
 
 	// getting notes detail from the store
@@ -34,7 +34,7 @@ function FileInfo() {
 				type="text"
 				id="fileName"
 				name="fileName"
-				value={fileName}
+				value={fileName || ''}
 				onChange={(e) => setFileName(e.target.value)}
 			/>
 			<NavBar />

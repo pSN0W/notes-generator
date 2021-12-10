@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { MDBInput } from 'mdbreact';
 
 import UserDisplay from './UserDisplay/UserDisplay';
+import Loader from '../../Utils/Loader/Loader';
 
+import { MessageContext } from '../../../Pages/NotesPage';
 import './SharedWithBox.css';
 import { updateNotes } from '../../../Action/notesAction';
 import { listUsers } from '../../../Action/userAction';
@@ -13,6 +15,9 @@ import { listUsers } from '../../../Action/userAction';
 function SharedWithBox({ setVisible }) {
 	const dispatch = useDispatch();
 	const id = useParams().id;
+
+	// function to update the message box
+	const updateMessageBox = useContext(MessageContext);
 
 	// all the users in the database
 	const [allUserList, setAllUserList] = useState([]);
@@ -32,13 +37,6 @@ function SharedWithBox({ setVisible }) {
 		userList,
 		error
 	} = useSelector((state) => state['userList']);
-
-	// reducer to deal with updating note
-	const {
-		loading: updateLoading,
-		success,
-		error: updateError
-	} = useSelector((state) => state['notesUpdate']);
 
 	// notesDetail from the store
 	const { loading, notesDetail } = useSelector(
@@ -68,6 +66,11 @@ function SharedWithBox({ setVisible }) {
 		);
 	}, [inputValue]);
 
+	// in case of error loading user list display error message
+	useEffect(() => {
+		updateMessageBox(error, 'danger');
+	}, [error]);
+
 	// this function deals with adding a user to shared_with list
 	const handleAdd = (username) => {
 		// put the new username and sharedWithUserList in a set to avoid identical value
@@ -90,10 +93,12 @@ function SharedWithBox({ setVisible }) {
 			: { global_file: false, shared_with: sharedWithUserList };
 		console.log(updateData);
 		dispatch(updateNotes(id, updateData));
+		// No need to deal with update state as already done in nav bar
 	};
 
 	return (
 		<div className="shared-box-wrapper">
+			{userListLoading && <Loader />}
 			<div className="shared-box-container">
 				<h2>Share</h2>
 				<div className="shared-box-all-user">

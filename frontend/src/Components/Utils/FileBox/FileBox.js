@@ -23,7 +23,6 @@ function FileBox({ setVisible, activeIndex }) {
 		loading: createLoading,
 		success: createSuccess,
 		createdProduct: createdProduct,
-		error: createError
 	} = useSelector((state) => state['notesCreate']);
 
 	// states for getting notes list
@@ -91,6 +90,11 @@ function FileBox({ setVisible, activeIndex }) {
 		setData(finData);
 	}, [value, input, notes, loading]);
 
+
+	if (error && !notes) {
+		return <h1>{error}</h1>;
+	}
+
 	return (
 		<div className="filebox-wrapper">
 			{loading && <Loader />}
@@ -119,7 +123,7 @@ function FileBox({ setVisible, activeIndex }) {
 						}}
 					/>
 				</div>
-				{	/*If data is not than loop over it and display it 
+				{/*If data is not than loop over it and display it 
 					If data is empty and user is authenticated or is on global tab display No Notes else display the user to login
 				*/}
 				{data && data.length ? (

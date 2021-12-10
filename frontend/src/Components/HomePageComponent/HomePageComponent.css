@@ -27,10 +27,21 @@
 	font-weight: bolder;
 	font-family: 'Times New Roman', Times, serif;
 }
+
+.homepage-header-note:hover {
+	cursor: pointer;
+}
+
 .homepage-header-img {
 	height: 80px;
 	width: 80px;
 	border-radius: 40px;
+}
+
+.homepage-header-usr-img {
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
 }
 
 .homepage-display {

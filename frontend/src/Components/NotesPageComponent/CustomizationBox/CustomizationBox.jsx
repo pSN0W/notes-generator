@@ -20,12 +20,7 @@ function CustomizationBox({ setVisible }) {
 		(state) => state['notesDetail']
 	);
 
-	// reducer to deal with updating note
-	const {
-		loading: updateLoading,
-		success,
-		error
-	} = useSelector((state) => state['notesUpdate']);
+
 	// The tab which is opened
 	const [value, setValue] = useState(0);
 
@@ -66,9 +61,9 @@ function CustomizationBox({ setVisible }) {
 			}
 		};
 		dispatch(updateNotes(id, data));
+		// no need to deal with state of update as they are already dealt in navbar
 	};
 
-	
 
 	return (
 		<div className="customization-box-wrapper">
