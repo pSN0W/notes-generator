@@ -1,5 +1,7 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+
+import ProfilePageComponent from '../Components/ProfilePageComponent/ProfilePageComponent';
+
 import { logoutAction } from '../Action/userAction';
 
 function ProfilePage() {
@@ -9,7 +11,7 @@ function ProfilePage() {
 	};
 	return (
 		<div>
-			<button onClick={handleLogOut}>Log Out</button>
+			<ProfilePageComponent />
 		</div>
 	);
 }

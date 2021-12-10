@@ -1,13 +1,20 @@
-.signup-wrapper {
+.profile-page-wrapper {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
-	align-items: center; 
+	align-items: center;
 	justify-content: center;
 	background-color: rgb(41, 33, 33);
 }
 
-.signup-container {
+.profile-page-img{
+    margin-left: 50px;
+    height: 500px;
+    width: 500px;
+    border-radius: 300px;
+}
+
+.profile-page-container {
 	width: 50vw;
 	height: 100vh;
 	display: flex;
@@ -18,12 +25,18 @@
 	color: whitesmoke;
 }
 
-.signup-btn {
+.profile-page-button-container{
+    margin-top: 50px;
+    display: flex;
+    gap: 50px;
+}
+
+.profile-page-btn {
 	background-color: blueviolet;
 	padding: 10px 40px;
 }
 
-.signup-btn:hover {
+.profile-page-btn:hover {
 	background-color: blue;
 	box-shadow: 10px;
 }

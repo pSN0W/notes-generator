@@ -5,7 +5,6 @@ import './PageDNE.css'
 
 function PageDNE() {
 	const user = JSON.parse(localStorage.getItem('userInfo'));
-    console.log(user["username"])
 	return (
 		<div className="dne-wrapper">
 			<div className="dne-container">

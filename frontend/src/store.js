@@ -14,7 +14,7 @@ const reducer = combineReducers({
 	notesDetail: notesDetailReducer,
 	notesValue: notesValueUpdateReducer,
 	notesUpdate: notesUpdateReducer,
-	notesCreate: notesCreateReducer,
+	notesCreate: notesCreateReducer, 
 	userLogin: userLoginReducer,
 	userList: userListReducer
 });
