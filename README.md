@@ -8,6 +8,8 @@ Notes generator is a web application written using React and Django. It converts
 normal markdown notes into a flowchart that makes revision of topic more
 efficient and fun.
 
+[![Youtube Video link of Notesy](http://img.youtube.com/vi/ZaSNOHdRDwI/0.jpg)](http://www.youtube.com/watch?v=ZaSNOHdRDwI "Notesy")
+
 ## 💡 Motivation
 
 The idea of this project came when I was working on a project for Object
