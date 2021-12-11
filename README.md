@@ -57,6 +57,7 @@ Follow the instructions in COMMANDS.txt file to start the app
 
 ## 🔨 Contribute
 
-Want to contribute to this project? <br> Fork this repository read about the
-code structure in HACKING.md file make the desired changes and then create a
-pull request.
+Want to contribute to this project? <br> Fork this repository, read about the
+code structure in
+<a href="https://github.com/pSN0W/notes-generator/HACKING.md">HACKING.md</a>
+file, make the desired changes and then create a pull request.
