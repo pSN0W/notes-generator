@@ -54,7 +54,7 @@ function SharedWithBox({ setVisible }) {
 		setGlobal(notesDetail?.global_file);
 	}, [loading, notesDetail]);
 
-	// update the userlist after data has been fetched from backend
+	// update the user list after data has been fetched from backend
 	useEffect(() => {
 		setAllUserList(userList);
 	}, [userList, userListLoading]);
@@ -138,13 +138,23 @@ function SharedWithBox({ setVisible }) {
 				<div className="shared-box-optns">
 					{/* A checkbox to make the note Global */}
 					<div class="custom-control custom-switch shared-box-switch">
-						<input
-							type="checkbox"
-							defaultChecked={global}
-							onChange={() => setGlobal(!global)}
-							className="custom-control-input"
-							id="customSwitches"
-						/>
+						{global ? (
+							<input
+								type="checkbox"
+								checked
+								onChange={() => setGlobal(!global)}
+								className="custom-control-input"
+								id="customSwitches"
+							/>
+						) : (
+							<input
+								type="checkbox"
+								onChange={() => setGlobal(!global)}
+								className="custom-control-input"
+								id="customSwitches"
+							/>
+						)}
+
 						<label
 							className="custom-control-label"
 							for="customSwitches"
