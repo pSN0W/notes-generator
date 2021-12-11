@@ -147,6 +147,9 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# ignore the enviornment
+'/backend/env'
+
 ### react ###
 .DS_*
 *.log
