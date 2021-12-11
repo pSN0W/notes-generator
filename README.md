@@ -5,10 +5,9 @@ Futuristic way of taking notes
 Notes generator is a web application written using React and Django. It converts normal markdown notes into a flowchart that makes revision of topic more efficient and fun. 
 
 ## 💡 Motivation
-The idea of this project came when I was working on a project for Object Oriented Methodology. I had to make class and Use Case diagrams and I completely hated the idea of dragging and dropping components and then writing to it. I just wanted to write the hierarchy in a text file and have some software convert them into a flowchart. I searched for software to do this, but couldn't fine any so I decided to create one myself. 
-During research on the topic, I found out that humans tend to remember concepts longer if they are presented to them in pictorial form, and that's why teachers use flowcharts for explanation. This discovery led me to expand my idea and motivated me to create an app that can convert a normal text file into a flowchart.
-Upon further investigation, I discovered that most of people have already shifted from taking notes using pen and paper to taking notes on computer and markdown is widely used file extension for this.
-
+The idea of this project came when I was working on a project for Object Oriented Methodology. I had to make class and Use Case diagrams and I completely hated the idea of dragging and dropping components and then writing to it. I just wanted to write the hierarchy in a text file and have some software convert them into a flowchart. I searched for software to do this, but couldn't fine any so I decided to create one myself. <br>
+During research on the topic, I found out that humans tend to remember concepts longer if they are presented to them in pictorial form, and that's why teachers use flowcharts for explanation. This discovery led me to expand my idea and motivated me to create an app that can convert a normal text file into a flowchart.<br>
+Upon further investigation, I discovered that most of people have already shifted from taking notes using pen and paper to taking notes on computer and markdown is widely used file extension for this.<br>
 <b>So finally I decided to make an application that can convert a markdown file into flowchart.</b>
 
 
@@ -23,7 +22,7 @@ Upon further investigation, I discovered that most of people have already shifte
 </ul>
 
 ## 🤖 Tech Stack
-Following tech stacks have been used to create this project
+Following tech stacks have been used to create this project <br>
 <b>React</b>
 React is used for frontend of the application because it works on the concept of building webpage from components and this concept is helpful for this app as flowchart is also build from small components (nodes).
 
