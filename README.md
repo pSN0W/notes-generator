@@ -9,7 +9,7 @@ normal markdown notes into a flowchart that makes revision of topic more
 efficient and fun. <br>
 Check out this video understand the working of Notesy better.
 
-[![Youtube Video link of Notesy](http://img.youtube.com/vi/ZaSNOHdRDwI/5.jpg)](http://www.youtube.com/watch?v=ZaSNOHdRDwI "Notesy")
+[![Youtube Video link of Notesy](http://img.youtube.com/vi/ZaSNOHdRDwI/0.jpg)](http://www.youtube.com/watch?v=ZaSNOHdRDwI "Notesy")
 
 ## 💡 Motivation
 
