@@ -148,7 +148,7 @@ dmypy.json
 cython_debug/
 
 # ignore the enviornment
-'/backend/env'
+backend/env
 
 ### react ###
 .DS_*
