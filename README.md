@@ -23,7 +23,7 @@ Upon further investigation, I discovered that most of people have already shifte
 
 ## 🤖 Tech Stack
 Following tech stacks have been used to create this project <br>
-<b color="red">React</b><br>
+<b style="color:red;">React</b><br>
 React is used for frontend of the application because it works on the concept of building webpage from components and this concept is helpful for this app as flowchart is also build from small components (nodes).
 
 <b>Pybind11 </b><br>
