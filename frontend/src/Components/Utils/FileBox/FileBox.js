@@ -22,7 +22,7 @@ function FileBox({ setVisible, activeIndex }) {
 	const {
 		loading: createLoading,
 		success: createSuccess,
-		createdProduct: createdProduct,
+		createdProduct: createdProduct
 	} = useSelector((state) => state['notesCreate']);
 
 	// states for getting notes list
@@ -54,9 +54,14 @@ function FileBox({ setVisible, activeIndex }) {
 		dispatch(listNotes());
 	}, []);
 
-	// dispatch creating new notes without any data
+	// If user is authenticated dispatch creating new notes without any data
+	// else redirect the user to login page
 	const handleCreateNew = () => {
-		dispatch(createNotes({}));
+		if (isAuthenticated) {
+			dispatch(createNotes({}));
+		} else {
+			window.location.href = '/login';
+		}
 	};
 
 	useEffect(() => {
@@ -89,7 +94,6 @@ function FileBox({ setVisible, activeIndex }) {
 		// the search box is displayed
 		setData(finData);
 	}, [value, input, notes, loading]);
-
 
 	if (error && !notes) {
 		return <h1>{error}</h1>;

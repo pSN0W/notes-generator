@@ -66,7 +66,9 @@ function FileInfo({
 					{isHeading ? (
 						<div className="fileinfo-empty" />
 					) : (
-						<IoMdOpen />
+						<a href={`/notes/${id}`} target="_blank">
+							<IoMdOpen />
+						</a>
 					)}
 				</div>
 			</div>
