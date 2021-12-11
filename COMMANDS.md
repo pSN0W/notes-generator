@@ -26,8 +26,8 @@ Create one for instance of terminal at notes-generator<br><br> Go to frontend
 directory<br> <code>cd frontend</code><br><br> Install all the necessary
 packages<br> <code>npm install</code><br><br> Start your development server<br>
 <code>npm start</code><br> <br> Once both your frontend and backend development
-server has successfully started search http://localhost:3000/ in your browser.
-<br> You will see home page of Notesy.
+server has successfully started search <code> http://localhost:3000/ <code> in
+your browser. <br> You will see home page of Notesy.
 
 ## Creating first note
 
