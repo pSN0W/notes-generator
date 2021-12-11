@@ -49,7 +49,7 @@ function CustomInputBox({ attribute, value, state, setState }) {
 		} else {
 			setState({ ...state, [attribute]: inputValue });
 		}
-	}, [inputValue,attribute,isNumber,setState,state]);
+	}, [inputValue]);
 
 	// return an integer type input box for number
 	if (isNumber) {
