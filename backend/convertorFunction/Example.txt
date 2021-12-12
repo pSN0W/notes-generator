@@ -1,0 +1,87 @@
+The function in main.cpp converts the content  passed to to it like
+
+# Pratyaksh Singh 
+> About 
+Undergraduate from IIITA 
+## Position of Responsibility 
+### Geekhaven - Technical Society of IIITA 
+> Position 
+Member AI wing 
+> Notable Work 
+Created and handled AI repo for open code 
+> Other Works 
+Led the initiative of increasing AI culture in IIITA 
+### Effervescence - Cultural fest of IIITA 
+> Notable Work 
+Used programming techniques to increase efficiency > Other Works 
+Managed Webinars and assisted in hosting events. 
+## Education 
+> Undergraduate 
+CGPA of 8.96 till second sem 
+> Class 12 
+86% > Class 10 
+10 CGPA 
+## Projects 
+> Notes-Generator 
+A web application written using React and Django that can convert a normal markdown into a flowchart 
+> Examination App 
+A desktop based app written in Java and Java FX using object oriented methadology to host examination 
+## Technical Skills 
+> Languages 
+C, C++ , Java , Python , JavaScript , MIPS (basic) , Matlab (basic) 
+> Frameworks 
+JavaFX , Selenium , Tkinter , TensorFlow , PyTorch , scikit-Learn , Keras , Trax , Django ,Django Rest Framework,React JS
+
+into something that looks like
+
+<Node
+    text="Pratyaksh Singh "
+    content="> About \nUndergraduate from IIITA \n"
+    position=""
+    leave={false}
+    root={true}
+>
+    <Node
+        text="Position of Responsibility "
+        content=""
+        position="left"
+        leave={false}
+        root={false}
+    >
+        <Node
+            text="Geekhaven - Technical Society of IIITA "
+            content="> Position \nMember AI wing \n> Notable Work \nCreated and handled AI repo for open code \n> Other Works \nLed the initiative of increasing AI culture in IIITA \n"
+            position="left-center"
+            leave={true}
+            root={false}
+        ></Node>
+        <Node
+            text="Effervescence - Cultural fest of IIITA "
+            content="> Notable Work \nUsed programming techniques to increase efficiency > Other Works \nManaged Webinars and assisted in hosting events. \n"
+            position="right"
+            leave={true}
+            root={false}
+        ></Node>
+    </Node>
+    <Node
+        text="Education "
+        content="> Undergraduate \nCGPA of 8.96 till second sem \n> Class 12 \n86% > Class 10 \n10 CGPA \n"
+        position=""
+        leave={true}
+        root={false}
+    ></Node>
+    <Node
+        text="Projects "
+        content="> Notes-Generator \nA web application written using React and Django that can convert a normal markdown into a flowchart \n> Examination App \nA desktop based app written in Java and Java FX using object oriented methadology to host examination \n"
+        position=""
+        leave={true}
+        root={false}
+    ></Node>
+    <Node
+        text="Technical Skills "
+        content="> Languages \nC, C++ , Java , Python , JavaScript , MIPS (basic) , Matlab (basic) \n> Frameworks \nJavaFX , Selenium , Tkinter , TensorFlow , PyTorch , scikit-Learn , Keras , Trax , Django ,Django Rest Framework,React JS \n"
+        position="right"
+        leave={true}
+        root={false}
+    ></Node>
+</Node>
